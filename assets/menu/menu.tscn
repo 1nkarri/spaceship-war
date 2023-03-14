@@ -1,0 +1,113 @@
+[gd_scene load_steps=10 format=3 uid="uid://b38u3nxq1ndi8"]
+
+[ext_resource type="Script" path="res://assets/menu/menu.gd" id="1_ffrue"]
+[ext_resource type="AudioStream" uid="uid://ca518b0dn7mnh" path="res://assets/menu/music/New Hope.ogg" id="2_awbgj"]
+[ext_resource type="Texture2D" uid="uid://dyocx0idxaec3" path="res://assets/menu/sprites/background.png" id="3_nya5i"]
+[ext_resource type="FontFile" uid="uid://bbmtgjd2j8wpu" path="res://assets/hud/fonts/NokiaCellphoneFC.ttf" id="4_xfhv3"]
+[ext_resource type="FontVariation" uid="uid://bf554vxwxn8q1" path="res://assets/hud/fonts/header_style_font.tres" id="5_qegng"]
+
+[sub_resource type="FontVariation" id="FontVariation_t1yxe"]
+base_font = ExtResource("4_xfhv3")
+spacing_glyph = 4
+
+[sub_resource type="FontVariation" id="FontVariation_p3wim"]
+base_font = ExtResource("4_xfhv3")
+
+[sub_resource type="FontVariation" id="FontVariation_672y8"]
+base_font = ExtResource("4_xfhv3")
+
+[sub_resource type="FontVariation" id="FontVariation_x5pdl"]
+base_font = ExtResource("4_xfhv3")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ffrue")
+
+[node name="BgMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_awbgj")
+volume_db = 10.0
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_nya5i")
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -59.5
+offset_bottom = 59.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spaceship" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.878431, 0.509804, 1)
+theme_override_colors/font_outline_color = Color(0.133333, 0.133333, 0.133333, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_t1yxe")
+theme_override_font_sizes/font_size = 10
+text = "SPACESHIP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="War" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.133333, 0.133333, 0.133333, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("5_qegng")
+theme_override_font_sizes/font_size = 32
+text = "WAR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.878431, 0.509804, 1)
+theme_override_colors/font_outline_color = Color(0.133333, 0.133333, 0.133333, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_p3wim")
+theme_override_font_sizes/font_size = 12
+text = "Start"
+flat = true
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.878431, 0.509804, 1)
+theme_override_colors/font_outline_color = Color(0.133333, 0.133333, 0.133333, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_672y8")
+theme_override_font_sizes/font_size = 12
+text = "Exit"
+flat = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Footer" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.133333, 0.133333, 0.133333, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("FontVariation_x5pdl")
+theme_override_font_sizes/font_size = 6
+text = "Developed by Jhanpiere Montes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
