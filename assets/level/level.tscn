@@ -1,3 +1,44 @@
-[gd_scene format=3 uid="uid://dhkfcv5wb5mk8"]
+[gd_scene load_steps=5 format=3 uid="uid://dhkfcv5wb5mk8"]
+
+[ext_resource type="Script" path="res://assets/level/level.gd" id="1_3t8cj"]
+[ext_resource type="AudioStream" uid="uid://b4qp28fplvkj3" path="res://assets/level/music/Common Fight.ogg" id="1_tgehq"]
+[ext_resource type="Texture2D" uid="uid://dabqr0l3capup" path="res://assets/level/sprites/desert-backgorund.png" id="3_7xr15"]
+[ext_resource type="Texture2D" uid="uid://c5vroiu6reyi6" path="res://assets/level/sprites/clouds.png" id="4_kqcbf"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_3t8cj")
+
+[node name="BgMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_tgehq")
+volume_db = -10.0
+
+[node name="Background" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+motion_mirroring = Vector2(0, 272)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/ParallaxLayer"]
+texture = ExtResource("3_7xr15")
+centered = false
+
+[node name="Cloud01" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Cloud01"]
+motion_mirroring = Vector2(0, 272)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cloud01/ParallaxLayer"]
+modulate = Color(1, 1, 1, 0.313726)
+texture = ExtResource("4_kqcbf")
+centered = false
+
+[node name="Cloud02" type="ParallaxBackground" parent="."]
+offset = Vector2(0, 128)
+transform = Transform2D(1, 0, 0, 1, 0, 128)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Cloud02"]
+motion_mirroring = Vector2(0, 272)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cloud02/ParallaxLayer"]
+modulate = Color(1, 1, 1, 0.470588)
+texture = ExtResource("4_kqcbf")
+centered = false

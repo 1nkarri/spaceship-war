@@ -30,7 +30,7 @@ script = ExtResource("1_ffrue")
 
 [node name="BgMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_awbgj")
-volume_db = 10.0
+volume_db = -10.0
 autoplay = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
